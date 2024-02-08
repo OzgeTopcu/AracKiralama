@@ -17,7 +17,6 @@ public class Program
         foreach (var cars in carManager.GetById(3))
         {
             Console.WriteLine(cars.DailyPrice);
-            Console.WriteLine(cars.ModelYear);
         }
     }
 }
