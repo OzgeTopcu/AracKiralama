@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public void Add(Color entity)
         {
-            using (AracContext context=new AracContext())
+            using (CarRentalContext context=new CarRentalContext())
             { 
                 var addedEntity=context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -24,7 +24,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void Delete(Color entity)
         {
-            using (AracContext context = new AracContext())
+            using (CarRentalContext context = new CarRentalContext())
             {
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
@@ -34,7 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public Color Get(Expression<Func<Color, bool>> filter)
         {
-            using (AracContext context = new AracContext())
+            using (CarRentalContext context = new CarRentalContext())
             {
                 return context.Set<Color>().SingleOrDefault(filter);
             }
@@ -43,7 +43,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
-            using (AracContext context = new AracContext())
+            using (CarRentalContext context = new CarRentalContext())
             {
                 return filter == null ? context.Set<Color>().ToList():context.Set<Color>().Where(filter).ToList();
             }
@@ -56,7 +56,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void Update(Color entity)
         {
-            using (AracContext context = new AracContext())
+            using (CarRentalContext context = new CarRentalContext())
             {
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
