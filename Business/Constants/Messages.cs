@@ -8,9 +8,14 @@ namespace Business.Constants
 {
     public class Messages
     {
-        public static string CarAdded = "Ürün eklendi";
-        public static string CarNameInvalid = "Ürün ismi geçersiz";
-        public static string MaintenanceTime = "Sistem Bakımda";
-        public static string CarsListed = "Ürünler Listelendi";
+        internal static string InvalidCarName = "Invalid car name";
+        internal static string EntityAdded = "Entity added to the system";
+        internal static string EntityDeleted = "Entity deleted from the system";
+        internal static string EntityUpdated = "Entity updated";
+        internal static string EntityUpdateError = "Entity couldn't updated";
+        internal static string EntityDetailsListed = "Entity details Listed";
+        internal static string MaintenanceTime = "Maintenance time";
+        internal static string EntitiesListed = "Entities listed";
+        internal static string CarHasntDelivered = "Car has not delivered yet.";
     }
 }

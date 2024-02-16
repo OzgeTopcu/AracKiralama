@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -9,27 +11,45 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class BrandManager:IBrandService
+    public class BrandManager : IBrandService
     {
+        public BrandManager(IBrandDal brandDal) 
+        { 
+            _brandDal= brandDal;
+        }
         IBrandDal _brandDal;
-        public BrandManager(IBrandDal brandDal)
+
+        public IResult Add(Brand brand)
         {
-            _brandDal = brandDal;
+            _brandDal.Add(brand);
+            return new SuccessResult(Messages.EntityAdded);
         }
 
-        public List<Brand> GetAll()
+        public IResult Delete(Brand brand)
         {
-            return _brandDal.GetAll();
+            _brandDal.Delete(brand);
+            return new SuccessResult(Messages.EntityDeleted);
         }
 
-        public Brand GetById(int brandId)
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.Get(c=>c.BrandId == brandId);
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.EntitiesListed);
         }
 
-        List<Brand> IBrandService.GetById(int brandId)
+        public IDataResult<Brand> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == id));
+        }
+
+        public IResult Update(Brand brand)
+        {
+            if (brand.BrandId > 0)
+            {
+                _brandDal.Update(brand);
+                return new SuccessResult(Messages.EntityUpdated);
+            }
+            return new ErrorResult(Messages.EntityUpdateError);
         }
     }
-}
+ }
+
