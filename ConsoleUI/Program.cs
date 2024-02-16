@@ -8,13 +8,26 @@ public class Program
 {
     static void Main(string[] args)
     {
+        CarTest();
+
+    }
+
+    private static void CarTest()
+    {
         CarManager carManager = new CarManager(new EfCarDal());
 
-        foreach (var car in carManager.GetAll()) 
+        var result = carManager.GetCarDetails();
+        if (result.Success)
         {
-            Console.WriteLine(car.ModelYear);
-        }
+            foreach (var product in carManager.GetCarDetails().Data)
+            {
+                Console.WriteLine(product.ModelYear + "/" + product.DailyPrice);
+            }
 
-    
+        }
+        else
+        {
+            Console.WriteLine(result.Message);
+        }
     }
 }

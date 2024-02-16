@@ -16,6 +16,14 @@ namespace Entities.Concrete
         public int DailyPrice { get; set; }
         public string Description { get; set; }
 
+        public void Remove(Car carToDelete)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Car SingleOrDefault(Func<object, bool> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
