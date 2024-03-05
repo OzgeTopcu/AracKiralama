@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class CarValidatior:AbstractValidator<Car>
+    public class CarValidator:AbstractValidator<Car>
     {
-        public CarValidatior() 
+        public CarValidator() 
         {
 
             RuleFor(c => c.DailyPrice).GreaterThan(0);
